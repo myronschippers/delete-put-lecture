@@ -43,5 +43,10 @@ dowload ZIP
     - DELETE FROM "restaurants" WHERE id='4';
     - painpoint is knowing which id to delete
 - Client-side needs a unique identifier to talk to the database (when deleteing)
+- Can only send data through a POST not a DELETE so how do we send the data needed to identify the item to be deleted?
+- DELETE we will send information through the URL
+    - "/restaurants/delete/1"
+    - setting up using route parameters
+    - '/restaurants' route is spent and left with '/delete/6' where 6 is the id clicked
 
 ## Branching

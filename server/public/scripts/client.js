@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady() {
     getRestaurants();
     $('.js-btn-addRestaurant').on('click', addRestaurant);
+    $('.container').on('click', '.js-btn-remove', deleteRestaurant);
 }
 
 function addRestaurant() {
@@ -38,6 +39,20 @@ function getRestaurants() {
     });
 }
 
+function deleteRestaurant() {
+    const $restaurantContr = $(this).parent();
+    const restaurantId = $restaurantContr.data('id');
+    console.log(restaurantId);
+
+    $.ajax({
+        type: 'DELETE',
+        url: `/restaurants/delete/${restaurantId}`,
+    })
+    .then(function(response) {
+        getRestaurants();
+    });
+}
+
 function render(arrayFromDatabase) {
     $('.container').empty();
 
@@ -47,6 +62,7 @@ function render(arrayFromDatabase) {
                 <h2>${restaurant.name}</h2>
                 <h6>${restaurant.address}</h6>
                 <p>${restaurant.bestfood}</p>
+                <button class="js-btn-remove">Remove</button>
             </div>
         `);
     }

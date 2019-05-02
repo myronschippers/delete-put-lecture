@@ -31,4 +31,23 @@ router.post('/', (req,res) => {
         });
 });
 
+router.delete('/delete/:id', (req, res) => {
+    // console.log(req.params);
+    const id = req.params.id;
+    // console.log(id);
+    const queryString = `DELETE FROM "restaurants" WHERE id=$1;`;
+
+    pool.query(queryString, [id])
+        .then((dbResponse) => {
+            res.sendStatus(200);
+        })
+        .catch((dbError) => {
+            console.log('Error deleting: ', dbError);
+            res.sendStatus(500);
+        })
+
+    // don't forget to point out Async issue
+    // res.sendStatus(200);
+});
+
 module.exports = router;
