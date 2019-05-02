@@ -48,5 +48,6 @@ dowload ZIP
     - "/restaurants/delete/1"
     - setting up using route parameters
     - '/restaurants' route is spent and left with '/delete/6' where 6 is the id clicked
+    - we are going to use '/delete/:id' to pull in the 6 as our id value on the server
 
 ## Branching
