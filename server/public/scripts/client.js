@@ -80,13 +80,11 @@ function render(arrayFromDatabase) {
         }
 
         $('.container').append(`
-            <div>
-                <div data-id="${restaurant.id}" class="js-visit box ${visitedStyling}">
-                    <h2>${restaurant.name} - ${visitedString}</h2>
-                    <h6>${restaurant.address}</h6>
-                    <p>${restaurant.bestfood}</p>
-                    <button class="js-btn-remove">Remove</button>
-                </div>
+            <div data-id="${restaurant.id}" class="js-visit box ${visitedStyling}">
+                <h2>${restaurant.name} - ${visitedString}</h2>
+                <h6>${restaurant.address}</h6>
+                <p>${restaurant.bestfood}</p>
+                <button class="js-btn-remove">Remove</button>
             </div>
         `);
     }
