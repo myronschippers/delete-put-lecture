@@ -50,4 +50,11 @@ dowload ZIP
     - '/restaurants' route is spent and left with '/delete/6' where 6 is the id clicked
     - we are going to use '/delete/:id' to pull in the 6 as our id value on the server
 
+## Adding Column and Pactching Data
+
+created new table "restaurants-test" 
+update queries to reflect the new table
+sort in ascending order by name
+Add default false for posting a restaurant
+
 ## Branching

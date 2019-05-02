@@ -3,7 +3,9 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req,res) => {
-    const queryString = `SELECT * FROM restaurants;`;
+    // const queryString = `SELECT * FROM "restaurants-test";`;
+    // add sorting to your query
+    const queryString = `SELECT * FROM "restaurants-test" ORDER BY "name" ASC;`;
 
     pool.query(queryString)
         .then((response) => {
@@ -18,8 +20,8 @@ router.get('/', (req,res) => {
 router.post('/', (req,res) => {
     const restaurantObject = req.body;
 
-    const queryString = `INSERT INTO restaurants (name, address, bestfood)
-                    VALUES ($1,$2,$3);`;
+    const queryString = `INSERT INTO "restaurants-test" (name, address, bestfood)
+                    VALUES ($1,$2,$3,false);`;
 
     pool.query(queryString, [restaurantObject.name, restaurantObject.address, restaurantObject.bestfood])
         .then((response) => {
@@ -35,7 +37,7 @@ router.delete('/delete/:id', (req, res) => {
     // console.log(req.params);
     const id = req.params.id;
     // console.log(id);
-    const queryString = `DELETE FROM "restaurants" WHERE id=$1;`;
+    const queryString = `DELETE FROM "restaurants-test" WHERE id=$1;`;
 
     pool.query(queryString, [id])
         .then((dbResponse) => {
