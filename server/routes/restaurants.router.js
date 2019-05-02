@@ -38,7 +38,7 @@ router.put('/visited/:id', (req, res) => {
     const restaurantId = req.params.id;
     const queryString = `UPDATE "restaurants-test" SET "visited"=true WHERE id=$1;`;
 
-    pool.query(queryString, [id])
+    pool.query(queryString, [restaurantId])
         .then((dbResponse) => {
             res.sendStatus(200);
         })

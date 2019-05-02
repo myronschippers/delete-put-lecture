@@ -4,6 +4,7 @@ function onReady() {
     getRestaurants();
     $('.js-btn-addRestaurant').on('click', addRestaurant);
     $('.container').on('click', '.js-btn-remove', deleteRestaurant);
+    $('.container').on('click', '.js-visit', visitRestaurant);
 }
 
 function addRestaurant() {
@@ -39,6 +40,19 @@ function getRestaurants() {
     });
 }
 
+function visitRestaurant() {
+    const restaurantId = $(this).data('id');
+
+    $.ajax({
+        type: 'PUT',
+        url: `/restaurants/visited/${restaurantId}`,
+    })
+    .then(function(response) {
+        console.log(response);
+        getRestaurants();
+    });
+}
+
 function deleteRestaurant() {
     const $restaurantContr = $(this).parent();
     const restaurantId = $restaurantContr.data('id');
@@ -57,12 +71,22 @@ function render(arrayFromDatabase) {
     $('.container').empty();
 
     for (let restaurant of arrayFromDatabase) {
+        let visitedString = 'Have not Checked out yet.';
+        let visitedStyling = 'isUnvisited';
+
+        if (restaurant.visited === true) {
+            visitedString = 'Checked out.';
+            visitedStyling = 'isVisited';
+        }
+
         $('.container').append(`
-            <div data-id="${restaurant.id}">
-                <h2>${restaurant.name}</h2>
-                <h6>${restaurant.address}</h6>
-                <p>${restaurant.bestfood}</p>
-                <button class="js-btn-remove">Remove</button>
+            <div>
+                <div data-id="${restaurant.id}" class="js-visit box ${visitedStyling}">
+                    <h2>${restaurant.name} - ${visitedString}</h2>
+                    <h6>${restaurant.address}</h6>
+                    <p>${restaurant.bestfood}</p>
+                    <button class="js-btn-remove">Remove</button>
+                </div>
             </div>
         `);
     }
