@@ -43,7 +43,7 @@ function render(arrayFromDatabase) {
 
     for (let restaurant of arrayFromDatabase) {
         $('.container').append(`
-            <div>
+            <div data-id="${restaurant.id}">
                 <h2>${restaurant.name}</h2>
                 <h6>${restaurant.address}</h6>
                 <p>${restaurant.bestfood}</p>

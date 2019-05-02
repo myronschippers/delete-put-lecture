@@ -2,7 +2,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const pool = new Pool({
-    database: 'restaurants',
+    database: 'restaurant_tracker',
     host: 'localhost',
     port: 5432,
     max: 10,

@@ -8,5 +8,40 @@ dowload ZIP
 
 - pushing to origin master (-u is updating the upstream)
 
+## Getting Started
+
+- npm start
+    - notice dependency error
+    - have to bring in dependencies
+- npm install
+- npm start
+    - now you can see your 
+- Create new nickname connection in postico
+    - nickname "Restaurants"
+- create database "restaurants"
+    - cratedb restaurants
+- create a new "restaurants" table
+    ```
+    CREATE TABLE "restaurants" (
+        "id" serial primary key,
+        "name" varchar(80) not null,
+        "address" varchar(120) not null,
+        "bestfood" varchar(80) 
+    );
+    ```
+- insert new entries in the table
+    ```
+    INSERT INTO "restaurants" ("name", "address", "bestfood")
+    VALUES ('Mother Cluckers', '1707 Locust St, Kansas City, MO 64108', 'Chicken Sandwich'),
+        ('54th St Grill', '7200 NW 86th Terrace, Kansas City, MO 64153', 'Spicy Chicken Sandwich'),
+        ('KC Taco Company', '520 Walnut St, Kansas City, MO 64106', 'Skillet Nachos');
+    ```
+
+## Deleting in Database
+
+- Run SQL Query
+    - DELETE FROM "restaurants" WHERE id='4';
+    - painpoint is knowing which id to delete
+- Client-side needs a unique identifier to talk to the database (when deleteing)
 
 ## Branching
