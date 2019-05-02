@@ -33,6 +33,21 @@ router.post('/', (req,res) => {
         });
 });
 
+// url: 'restaurants/viseted, type: 'PUT'
+router.put('/visited/:id', (req, res) => {
+    const restaurantId = req.params.id;
+    const queryString = `UPDATE "restaurants-test" SET "visited"=true WHERE id=$1;`;
+
+    pool.query(queryString, [id])
+        .then((dbResponse) => {
+            res.sendStatus(200);
+        })
+        .catch((dbError) => {
+            console.log('Error updating: ', dbError);
+            res.sendStatus(500);
+        });
+});
+
 router.delete('/delete/:id', (req, res) => {
     // console.log(req.params);
     const id = req.params.id;
